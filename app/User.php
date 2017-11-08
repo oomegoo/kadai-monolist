@@ -110,7 +110,7 @@ class User extends Model implements AuthenticatableContract,
     public function dont_have($itemId)
     {
         // 既に Have しているかの確認
-        $exist = $this->is_had($itemId);
+        $exist = $this->had($itemId);
 
         if ($exist) {
             // 既に Have していれば Have を外す
@@ -121,7 +121,7 @@ class User extends Model implements AuthenticatableContract,
         }
     }
 
-    public function is_had($itemIdOrCode)
+    public function had($itemIdOrCode)
     {
         if (is_numeric($itemIdOrCode)) {
             $item_id_exists = $this->have_items()->where('item_id', $itemIdOrCode)->exists();

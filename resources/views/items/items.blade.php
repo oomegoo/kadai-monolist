@@ -16,13 +16,9 @@
                                 <div class="buttons text-center">
                                     @if(Auth::check())
                                         @include('items.want_button', ['item' => $item])
-                                    @endif
-                            </div>
-                            <div class="buttons text-center">
-                                    @if(Auth::check())
                                         @include('items.have_button', ['item' => $item])
                                     @endif
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>

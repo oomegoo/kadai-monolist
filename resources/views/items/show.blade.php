@@ -1,4 +1,4 @@
-@extends('layouts.app’)
+@extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
@@ -12,10 +12,6 @@
                         <div class="buttons text-center">
                             @if (Auth::check())
                                 @include('items.want_button', ['item' => $item])
-                            @endif
-                        </div>
-                        <div class="buttons text-center">
-                            @if (Auth::check())
                                 @include('items.have_button', ['item' => $item])
                             @endif
                         </div>

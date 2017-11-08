@@ -6,6 +6,6 @@
 @else
     {!! Form::open(['route' => 'item_user.have']) !!}
         {!! Form::hidden('itemCode', $item->code) !!}
-        {!! Form::submit('Want it', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Have it', ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
 @endif
