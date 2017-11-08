@@ -86,6 +86,51 @@ class User extends Model implements AuthenticatableContract,
             return $item_code_exists;
         }
     }
+    
+    public function have_items()
+    {
+        return $this->items()->where('type', 'have');
+    }
+  
+    public function have($itemId)
+    {
+        // 既に Have しているかの確認
+        $exist = $this->had($itemId);
+
+        if ($exist) {
+            // 既に Have していれば何もしない
+            return false;
+        } else {
+            // not_have であれば Have する
+            $this->items()->attach($itemId, ['type' => 'have']);
+            return true;
+        }
+    }
+
+    public function dont_have($itemId)
+    {
+        // 既に Have しているかの確認
+        $exist = $this->is_had($itemId);
+
+        if ($exist) {
+            // 既に Have していれば Have を外す
+            \DB::delete("DELETE FROM item_user WHERE user_id = ? AND item_id = ? AND type = 'have'", [\Auth::user()->id, $itemId]);
+        } else {
+            // 未 Have であれば何もしない
+            return false;
+        }
+    }
+
+    public function is_had($itemIdOrCode)
+    {
+        if (is_numeric($itemIdOrCode)) {
+            $item_id_exists = $this->have_items()->where('item_id', $itemIdOrCode)->exists();
+            return $item_id_exists;
+        } else {
+            $item_code_exists = $this->have_items()->where('code', $itemIdOrCode)->exists();
+            return $item_code_exists;
+        }
+    }
 }
 
 
