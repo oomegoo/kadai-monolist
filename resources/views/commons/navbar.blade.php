@@ -18,6 +18,7 @@ avbar-collapse-1" aria-expanded="false">
                             <a href="{{ route('items.create') }}">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>アイテムを追加</a>
                         </li>
+                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="gravatar">
